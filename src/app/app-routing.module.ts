@@ -14,11 +14,15 @@ const routes: Routes = [
     path:'register',component:RegisterComponent
   },
   {
-    path:'seedetails',component:SeedetailsComponent
+    path: 'seedetails', component: SeedetailsComponent
   },
   {
-    path:'adddetains',component:AddpatientComponent
+    path: 'addPatient', component: AddpatientComponent
   },
+  // {
+  //   path:'admin',
+  //   loadChildren: () => import('./adminmodule/adminmodule.module').then(m => m.AdminmoduleModule),
+  // }
 ];
 
 @NgModule({

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,4 +9,15 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Blockchain-based-EHR';
   
+  constructor(public router: Router) { }
+
+  ngOnInit() {
+  }
+
+  navigateToSeeDetails() {
+    this.router.navigate(['seedetails']);
+  }
+  navigateToAddDetails() {
+    this.router.navigate(['addPatient']);
+  }
 }

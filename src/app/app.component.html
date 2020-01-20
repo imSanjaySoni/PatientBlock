@@ -1,7 +1,22 @@
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <app-login></app-login>
-    </div>
-  </div>
+<div class="page-wrapper">
+    <mat-toolbar>
+        <mat-toolbar-row>
+            <button mat-icon-button>
+                <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+            </button>
+            <label class="logo">BlcokChain <span>Project</span></label>
+            <span class="menu-spacer"></span>
+        </mat-toolbar-row>
+    </mat-toolbar>   
+    <mat-sidenav-container >
+    <mat-sidenav #sidenav>
+        <mat-nav-list>
+            <a mat-list-item (click)="navigateToAddDetails()" (click)="sidenav.close()"> Add Details </a>
+            <a mat-list-item (click)="navigateToSeeDetails()"(click)="sidenav.close()">See Patient details </a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+    </mat-sidenav-container>
 </div>
