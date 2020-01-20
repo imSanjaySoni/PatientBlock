@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Hello World</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.36/dist/web3.min.js" integrity="sha256-nWBTbvxhJgjslRyuAKJHK+XcZPlCnmIAAMixz6EefVk=" crossorigin="anonymous"></script>
+
+  <script language="javascript" type="text/javascript" src="./abi.js"></script>
+</head>
+
+<body>
+	<script>
+      var contract;
+
+      function startApp() {
+        var contractAddress = "0xa3E684a10d6a20381AdA0265e3b1B4aB84B7c163";
+        contract = web3.eth.contract(abi, contractAddress);
+       
+      }
+      function viewMessage(message){
+      	HelloWorld.methods.getMessage(message).call()
+      }
+
+      window.addEventListener('load', function() {
+
+       
+        if (typeof web3 !== 'undefined') {
+         
+          web3js = new Web3(web3.currentProvider);
+        } else {
+         
+         
+        }
+
+       
+        startApp()
+
+      })
+    </script>
+  </body>
+</html>
+
