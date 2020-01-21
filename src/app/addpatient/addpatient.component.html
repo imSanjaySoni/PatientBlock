@@ -1,0 +1,107 @@
+<div class="container" >
+    <div class="header">
+            <h4 class="title">Patients Detals</h4>
+    </div>
+    <mat-horizontal-stepper [linear]="isLinear" #stepper>
+        <mat-step [stepControl]="personalDetails">
+            <ng-template matStepLabel>Fill out personal details</ng-template>
+            <section class="info-card" [formGroup]="personalDetails">
+                <div class="section-body">
+                    <div class="row form-group">
+                        <div class="col-sm-12 col-md-6">
+                            <label for="firstname" class="required-label">First Name</label>
+                            <input type="text" class="form-control" id="firstname" placeholder="First Name" formControlName="firstName" required>                          
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <label for="middleName" class="required-label">Middle Name</label>
+                            <input type="text" class="form-control" id="middleName" placeholder="Middle Name" formControlName="middleName" required>                        
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <label for="lastName" class="required-label">Last Name</label>
+                            <input type="text" class="form-control" id="lastName" placeholder="Last Name" formControlName="lastName" required>                        
+                        </div>
+                        <div class="col-sm-12 col-md-6 ">
+                            <mat-form-field>
+                                <input matInput id="dob" [matDatepicker]="picker" placeholder="Date of birth" formControlName="dob" required>
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-6 col-sm-12 ">
+                            <label for="phone-number" class="required-label">Phone Number</label>
+                            <input type="text" class="form-control" id="phone-number" placeholder="Phone Number" formControlName="phoneNumber" appDigitOnly required>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <label for="add-line-1" class="required-label">Address</label>
+                            <input type="text" class="form-control" id="add-line-1" placeholder="Address Line 1" formControlName="addressLine1" required>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <label for="city" class="required-label">City</label>
+                            <input type="text" class="form-control" id="city" placeholder="City" formControlName="city" required>
+                        </div>          
+                        <div class="col-md-6 col-sm-12">
+                            <label for="state" class="required-label">State</label>
+                            <input type="text" class="form-control" id="state" placeholder="State" formControlName="state" required>                         
+                        </div>
+                        <div class="col-md-6 col-sm-12" >
+                            <label for="postcode" class="required-label">Postcode</label>
+                            <input type="text" class="form-control" id="postcode" placeholder="Postcode" formControlName="postcode" appDigitOnly required>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <label for="country" class="required-label">Country</label>
+                            <input type="text" class="form-control" id="country" placeholder="Country" formControlName="country" required>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div>
+                <button class="btn btn-outline-success">Save</button>
+                <button class="btn btn-primary float-right" matStepperNext>Next</button>            
+            </div>
+        </mat-step>
+        <mat-step [stepControl]="medicalDetails">
+            <ng-template matStepLabel>Fill out medical details</ng-template>
+            <section class="info-card" [formGroup]="medicalDetails">
+            <div class="section-body">
+                <div class="row form-group">
+                    <div class="col-sm-12 col-md-8">
+                        <label for="diseasename" class="required-label">Disease Name</label>
+                        <input  class="form-control" id="diseasename" placeholder="Disease Name" formControlName="diseaseName" required>                          
+                    </div>
+                    <div class="col-sm-12 col-md-8">
+                          <div formArrayName="medicne_Name">
+                            <div *ngFor="let item of medicine.controls; let pointIndex=index" [formGroupName]="pointIndex">
+                               <label for="med" class="required-label">Medicine Name</label>
+                                <input id="med" class="form-control" formControlName="medicineName" placeholder="Medicine Name" >
+                                <i (click)="deleteMedicine(pointIndex)" style="color:red;" class="material-icons">delete</i>
+                                <i (click)="addMedicine()" class="material-icons">add</i>
+                            </div>
+                        </div>
+                        <!-- <label for="medicneName" class="required-label">Medicne Name</label>
+                        <input type="text" class="form-control" id="medicneName" placeholder="First Name" formControlName="medicneName" required>                           -->
+                    </div>
+                    <div class="col-sm-12 col-md-8">
+                        <mat-form-field>
+                            <input matInput id="doadmit" [matDatepicker]="picker1" placeholder="Date of admit" formControlName="doadmit" required>
+                            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                            <mat-datepicker #picker1></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-12 col-md-8 ">
+                        <mat-form-field>
+                            <input matInput id="dodischarge" [matDatepicker]="picker2" placeholder="Date of discharge" formControlName="dodischarge" required>
+                            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                            <mat-datepicker #picker2></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div>
+            <button class="btn btn-dark" matStepperPrevious>Back</button>
+            <button class="btn btn-outline-success float-right">Save</button>
+        </div>
+    </mat-step>
+    </mat-horizontal-stepper>
+</div>
+
